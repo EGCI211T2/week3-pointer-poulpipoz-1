@@ -5,33 +5,50 @@
 using namespace std;
 
 int main(int argc,char *argv[]){
-  int *pa, *pb, i, temp;
-int a[SIZE] ={1,2,3,4,5,6,7,8,9,10}; 
-pa = &a[0]; //pa =a;
+  int *pa = new int;
+  int *pb = new int;
+
+  int i, temp;
+  int n = argc-1;
+
+  pa=new int[n];
+  int *start1 = pa;
+  int *start2 = pa;
+  int *start3 = pa;
+
+  for(i=0;i<n;i++){
+
+    *start2=atoi(argv[i+1]);
+
+    start2++;
+
+  }
 cout<<"Original: ";
-for (i=0; i<SIZE-1; i++ ,pa++){
-   cout<<setw(3)<<*pa ;//<<endl;
+for (i=0; i<n-1; i++ ,start1++){
+   cout<<setw(3)<<*start1 ;//<<endl;
   //cout<<pa<<endl;
 }
-cout<<setw(3)<<*pa<<endl;
+cout<<setw(3)<<*start1<<endl;
 
-pa = &a[0];  
-pb = &a[SIZE-1];
-for (i=0; i<SIZE/2; i++)
+
+pb = &pa[n-1];
+for (i=0; i<n/2; i++)
 {
    temp = *pa;  
    *pa = *pb;  
    *pb = temp;
    pa++;  pb--;
 }
-pa=&a[0];
-pb-=SIZE/2;
+//pb-=n/2;
 cout<<"Reversed: ";
-for (i=0; i<SIZE-1; i++ ,pa++){
-   cout<<setw(3)<<*pa ;//<<endl;
+for (i=0; i<n-1; i++ ,start3++){
+   cout<<setw(3)<<*start3 ;//<<endl;
   //cout<<pa<<endl;
 }
-cout<<setw(3)<<*pa<<endl;
+cout<<setw(3)<<*start3<<endl;
+
+//delete pa;
+//delete pb;
 
 
 return 0;
